@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catsint - Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Rubik+Glitch&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="dash-header">
+        <div class="container" style="position: relative; height: 100%;">
+            <div style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); display: flex; align-items: center; gap: 10px;">
+                <svg width="26" height="26" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 12.857 6.563 C 12.857 10.187 9.979 13.125 6.429 13.125 L 0 13.125 L 0 6.563 C 0 2.938 2.878 0 6.429 0 C 9.979 0 12.857 2.938 12.857 6.563 Z M 12.857 19.688 C 12.857 16.063 15.735 13.125 19.286 13.125 L 25.714 13.125 L 25.714 19.688 C 25.714 23.312 22.836 26.25 19.286 26.25 C 15.735 26.25 12.857 23.312 12.857 19.688 Z M 0 19.688 C 0 23.312 2.878 26.25 6.429 26.25 L 12.857 26.25 L 12.857 19.688 C 12.857 16.063 9.979 13.125 6.429 13.125 C 2.878 13.125 0 16.063 0 19.688 Z M 25.714 6.563 C 25.714 2.938 22.836 0 19.286 0 L 12.857 0 L 12.857 6.563 C 12.857 10.187 15.735 13.125 19.286 13.125 C 22.836 13.125 25.714 10.187 25.714 6.563 Z" fill="rgb(255, 255, 255)"/>
+                </svg>
+            </div>
+
+            <nav class="dash-nav">
+                <a href="#" class="dash-tab active" data-tab="home">Home</a>
+                <a href="#" class="dash-tab" data-tab="products">Products</a>
+                <a href="#" class="dash-tab" data-tab="license">License</a>
+            </nav>
+
+            <div class="user-profile-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: rgba(255,255,255,0.7)"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </div>
+        </div>
+    </header>
+
+    <main class="dash-content container">
+        <!-- Home Section -->
+        <div id="home" class="tab-content active">
+            <h1 class="dash-title">Good afternoon, <span id="displayNickname">User</span></h1>
+            
+            <div class="dash-card">
+                <div class="card-header">
+                    <div>
+                        <h2 class="card-title">Account informations</h2>
+                        <p class="card-desc">Your account details</p>
+                    </div>
+                    <a href="javascript:CatsintAuth.logout()" class="btn-logout">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                        Logout
+                    </a>
+                </div>
+
+                <div class="info-group">
+                    <p class="info-label">Logged as</p>
+                    <p class="info-value" id="infoNickname">User</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Section -->
+        <div id="products" class="tab-content">
+            <h1 class="dash-title" style="color: #fff;">Putty Sessions</h1>
+            <p class="dash-subtitle">Manage your SSH connections and servers</p>
+
+            <div class="server-grid">
+                <!-- Server Box 1 -->
+                <div class="server-box">
+                    <div class="server-header">
+                        <div class="server-name">Main Server</div>
+                        <div class="server-status"></div>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">IP Address</span>
+                        <span class="info-value">192.168.1.105</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Port</span>
+                        <span class="info-value">22</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">User</span>
+                        <span class="info-value dynamic-username">root</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Password</span>
+                        <span class="info-value">••••••••</span>
+                    </div>
+                    <button class="btn-connect">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                        Connect via Putty
+                    </button>
+                </div>
+
+                <!-- Server Box 2 -->
+                <div class="server-box">
+                    <div class="server-header">
+                        <div class="server-name">Backup Storage</div>
+                        <div class="server-status" style="background: #ffcc00; box-shadow: 0 0 10px #ffcc00;"></div>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">IP Address</span>
+                        <span class="info-value">10.0.0.12</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Port</span>
+                        <span class="info-value">22</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">User</span>
+                        <span class="info-value dynamic-username">admin</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Password</span>
+                        <span class="info-value">••••••••</span>
+                    </div>
+                    <button class="btn-connect">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                        Connect via Putty
+                    </button>
+                </div>
+
+                <!-- Server Box 3 -->
+                <div class="server-box">
+                    <div class="server-header">
+                        <div class="server-name">Web Host</div>
+                        <div class="server-status"></div>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">IP Address</span>
+                        <span class="info-value">45.77.12.88</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Port</span>
+                        <span class="info-value">2222</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">User</span>
+                        <span class="info-value dynamic-username">ubuntu</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Password</span>
+                        <span class="info-value">••••••••</span>
+                    </div>
+                    <button class="btn-connect">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                        Connect via Putty
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- License Section -->
+        <div id="license" class="tab-content">
+            <h1 class="dash-title" style="color: #fff;">License Extension</h1>
+            <p class="dash-subtitle">Extend your license with a new key</p>
+
+            <div class="dash-card">
+                <div class="card-header" style="border: none; margin-bottom: 20px;">
+                    <div>
+                        <h2 class="card-title">Extend License</h2>
+                        <p class="card-desc">Enter your new license key</p>
+                    </div>
+                </div>
+
+                <div class="license-input-group">
+                    <input type="text" class="license-input" placeholder="Enter license key (e.g., FAMAS-XXXX-XXXX-XXXX-XXXX)">
+                    <button class="btn-validate">Validate</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Removed -->
+
+    <script src="auth.js"></script>
+    <script>
+        // Tab switching logic
+        const tabs = document.querySelectorAll('.dash-tab');
+        const contents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = tab.getAttribute('data-tab');
+
+                // Update tabs
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                // Update content
+                contents.forEach(c => {
+                    c.classList.remove('active');
+                    if (c.id === target) {
+                        c.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // User display
+        const updateUserData = () => {
+            try {
+                const sessionData = localStorage.getItem('catsint_session');
+                if (sessionData) {
+                    const session = JSON.parse(atob(sessionData));
+                    const username = session.username || 'User';
+                    
+                    // Update display elements
+                    const displayNickname = document.getElementById('displayNickname');
+                    const infoNickname = document.getElementById('infoNickname');
+                    
+                    if (displayNickname) displayNickname.textContent = username;
+                    if (infoNickname) infoNickname.textContent = username;
+                    document.title = `Catsint - ${username}'s Dashboard`;
+
+                    // Update all dynamic username fields in server boxes
+                    document.querySelectorAll('.dynamic-username').forEach(el => {
+                        el.textContent = username;
+                    });
+                }
+            } catch (e) {
+                console.error('Error displaying session data:', e);
+            }
+        };
+
+        // Initialize user data
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', updateUserData);
+        } else {
+            updateUserData();
+        }
+    </script>
+</body>
+</html>

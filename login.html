@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catsint - Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Rubik+Glitch&display=swap" rel="stylesheet">
+    <style>
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-card {
+            --border-bottom-width: 1px;
+            --border-color: var(--token-6839e435-35f3-4ab3-b723-e98c27e525bc, rgba(255, 255, 255, 0.1));
+            --border-left-width: 1px;
+            --border-right-width: 1px;
+            --border-style: solid;
+            --border-top-width: 1px;
+            backdrop-filter: blur(10px);
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 16px;
+            padding: 48px;
+            max-width: 450px;
+            width: 100%;
+            border: var(--border-top-width) var(--border-style) var(--border-color);
+            box-shadow: 0px 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .login-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            color: var(--token-92a1cea2-6d53-45ff-98da-32c110a8c3fc, rgb(255, 255, 255));
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--token-6839e435-35f3-4ab3-b723-e98c27e525bc, rgba(255, 255, 255, 0.1));
+            border-radius: 8px;
+            color: white;
+            font-size: 15px;
+            font-family: "Outfit", sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--token-aea172f0-3396-4049-adec-6bcfa7c365ff, rgb(81, 47, 235));
+            background-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 3px rgba(81, 47, 235, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .error-message {
+            color: #ff4444;
+            font-size: 13px;
+            margin-top: 8px;
+            display: none;
+            animation: shake 0.3s ease;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .success-message {
+            color: #44ff44;
+            font-size: 13px;
+            margin-top: 8px;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            margin-top: 8px;
+        }
+
+        .login-footer {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 13px;
+            color: var(--token-8c14519b-b926-46e8-8772-9a05cbede172, rgba(255, 255, 255, 0.7));
+        }
+
+        .attempts-counter {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 12px;
+            color: var(--token-8c14519b-b926-46e8-8772-9a05cbede172, rgba(255, 255, 255, 0.7));
+        }
+
+        .locked-message {
+            text-align: center;
+            color: #ff4444;
+            font-size: 14px;
+            margin-top: 16px;
+            display: none;
+        }
+
+        .locked-message.show {
+            display: block;
+        }
+
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 32px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card slide-up">
+            <div class="login-header">
+                <div class="login-logo">
+                    <svg width="40" height="40" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 12.857 6.563 C 12.857 10.187 9.979 13.125 6.429 13.125 L 0 13.125 L 0 6.563 C 0 2.938 2.878 0 6.429 0 C 9.979 0 12.857 2.938 12.857 6.563 Z M 12.857 19.688 C 12.857 16.063 15.735 13.125 19.286 13.125 L 25.714 13.125 L 25.714 19.688 C 25.714 23.312 22.836 26.25 19.286 26.25 C 15.735 26.25 12.857 23.312 12.857 19.688 Z M 0 19.688 C 0 23.312 2.878 26.25 6.429 26.25 L 12.857 26.25 L 12.857 19.688 C 12.857 16.063 9.979 13.125 6.429 13.125 C 2.878 13.125 0 16.063 0 19.688 Z M 25.714 6.563 C 25.714 2.938 22.836 0 19.286 0 L 12.857 0 L 12.857 6.563 C 12.857 10.187 15.735 13.125 19.286 13.125 C 22.836 13.125 25.714 10.187 25.714 6.563 Z" fill="rgb(255, 255, 255)"/>
+                    </svg>
+                </div>
+                <h2 style="font-size: 28px; margin-bottom: 8px;">Welcome Back</h2>
+                <p style="font-size: 14px; color: rgba(255, 255, 255, 0.7);">Enter your license key to access dashboard</p>
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username" class="form-label">Username</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        class="form-input" 
+                        placeholder="Enter your username"
+                        autocomplete="off"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="licenseKey" class="form-label">License Key</label>
+                    <input 
+                        type="password" 
+                        id="licenseKey" 
+                        class="form-input" 
+                        placeholder="XXXX-XXXX-XXXX-XXXX"
+                        autocomplete="off"
+                        required
+                    >
+                    <div id="errorMessage" class="error-message">Invalid credentials. Please try again.</div>
+                    <div id="successMessage" class="success-message">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle; margin-right: 4px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Login successful! Redirecting...
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary login-btn" id="loginBtn">
+                    Login to Dashboard
+                </button>
+
+                <div class="attempts-counter" id="attemptsCounter">
+                    Attempts remaining: <span id="attemptsLeft">5</span>
+                </div>
+
+                <div class="locked-message" id="lockedMessage">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle; margin-right: 6px;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <span>Account locked for 5 minutes due to too many failed attempts</span>
+                </div>
+            </form>
+
+            <div class="login-footer">
+                <p>Protected by Catsint Security</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>
